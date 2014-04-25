@@ -28,4 +28,7 @@
 }
 */
 
+- (IBAction)buttonClosePressed:(id)sender {
+}
+
 @end

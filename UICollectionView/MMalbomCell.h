@@ -13,5 +13,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *albomLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *albomImage;
 @property (weak, nonatomic) IBOutlet UIImageView *albomImageFoto;
+@property (weak, nonatomic) IBOutlet UIButton *buttonClose;
+
+- (IBAction)buttonClosePressed:(id)sender;
 
 @end
