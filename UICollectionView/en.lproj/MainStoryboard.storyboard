@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11E53" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="4">
+            <objects>
+                <viewController id="2" customClass="MMViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5">
+                        <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bE9-pt-7p1">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="680" id="6R2-Ck-d83"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="fjX-KU-5F9">
+                                    <size key="itemSize" width="265" height="216"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="E3g-oL-oU2" customClass="MMalbomCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="512" height="335"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="512" height="335"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XIR-k1-Xe7">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gJA-br-2cx">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="105" id="8va-8Y-ngh"/>
+                                                        <constraint firstAttribute="width" constant="158" id="Z35-ju-Kug"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="photoalbum-blue.png" translatesAutoresizingMaskIntoConstraints="NO" id="o7M-jp-oWK">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="300" id="5MS-Cj-UN4"/>
+                                                        <constraint firstAttribute="width" constant="337" id="sIo-Gu-coc"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" red="1" green="0.59729421589999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="XIR-k1-Xe7" secondAttribute="bottom" constant="10" id="0XF-8i-X65"/>
+                                            <constraint firstItem="o7M-jp-oWK" firstAttribute="centerX" secondItem="XIR-k1-Xe7" secondAttribute="centerX" type="default" id="4my-Tn-Yaj"/>
+                                            <constraint firstItem="gJA-br-2cx" firstAttribute="top" secondItem="E3g-oL-oU2" secondAttribute="top" constant="114" id="5aR-kX-e6j"/>
+                                            <constraint firstItem="o7M-jp-oWK" firstAttribute="centerX" secondItem="E3g-oL-oU2" secondAttribute="centerX" type="default" id="8TT-yb-BtE"/>
+                                            <constraint firstItem="gJA-br-2cx" firstAttribute="leading" secondItem="E3g-oL-oU2" secondAttribute="leading" constant="196" id="LMQ-vQ-4os"/>
+                                            <constraint firstItem="o7M-jp-oWK" firstAttribute="top" secondItem="E3g-oL-oU2" secondAttribute="top" constant="14" id="Twx-Xj-ESi"/>
+                                        </constraints>
+                                        <size key="customSize" width="512" height="335"/>
+                                        <connections>
+                                            <outlet property="albomImage" destination="o7M-jp-oWK" id="pLl-3e-4k5"/>
+                                            <outlet property="albomImageFoto" destination="gJA-br-2cx" id="VWB-13-je8"/>
+                                            <outlet property="albomLabel" destination="XIR-k1-Xe7" id="Ldb-Sj-1ju"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="2" id="tvo-Kg-jBr"/>
+                                    <outlet property="delegate" destination="2" id="a7L-rD-agj"/>
+                                </connections>
+                            </collectionView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="1" translatesAutoresizingMaskIntoConstraints="NO" id="OMq-NQ-CjQ">
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </pageControl>
+                            <navigationBar contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="pBI-cR-si1">
+                                <items>
+                                    <navigationItem title="Title" id="X6K-mL-CPG"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pBI-cR-si1" firstAttribute="top" secondItem="5" secondAttribute="top" type="default" id="1I0-OK-jCb"/>
+                            <constraint firstItem="OMq-NQ-CjQ" firstAttribute="leading" secondItem="5" secondAttribute="leading" type="default" id="1Lc-Zm-OLe"/>
+                            <constraint firstItem="pBI-cR-si1" firstAttribute="trailing" secondItem="5" secondAttribute="trailing" type="default" id="JAf-Fm-Kfp"/>
+                            <constraint firstItem="OMq-NQ-CjQ" firstAttribute="trailing" secondItem="5" secondAttribute="trailing" type="default" id="JPJ-Ij-rgX"/>
+                            <constraint firstItem="pBI-cR-si1" firstAttribute="leading" secondItem="5" secondAttribute="leading" type="default" id="W7o-NH-5gs"/>
+                            <constraint firstItem="bE9-pt-7p1" firstAttribute="leading" secondItem="5" secondAttribute="leading" type="default" id="seA-dt-Ucc"/>
+                            <constraint firstItem="bE9-pt-7p1" firstAttribute="trailing" secondItem="5" secondAttribute="trailing" type="default" id="spq-JT-taA"/>
+                            <constraint firstItem="OMq-NQ-CjQ" firstAttribute="top" secondItem="5" secondAttribute="top" constant="721" id="zcF-VP-fFR"/>
+                            <constraint firstItem="bE9-pt-7p1" firstAttribute="top" secondItem="pBI-cR-si1" secondAttribute="bottom" type="default" id="zju-RW-VQi"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="albomPageControl" destination="OMq-NQ-CjQ" id="cv6-Pq-cKs"/>
+                        <outlet property="collectionView" destination="bE9-pt-7p1" id="wA1-hN-8Fa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="photoalbum-blue.png" width="700" height="700"/>
+    </resources>
+    <classes>
+        <class className="MMViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MMViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="albomPageControl" candidateClass="UIPageControl"/>
+                <relationship kind="outlet" name="collectionView" candidateClass="UICollectionView"/>
+            </relationships>
+        </class>
+        <class className="MMalbomCell" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MMalbomCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="albomImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="albomImageFoto" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="albomLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="UICollectionReusableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
+        </class>
+        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
+        </class>
+    </classes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+</document>
