@@ -11,7 +11,7 @@
 
 @interface MMViewController ()
 {
-    NSArray * arrayNumbers;
+    NSMutableArray * arrayNumbers;
 }
 @property (nonatomic, strong) IBOutlet UICollectionView * collectionView;
 @property (weak, nonatomic) IBOutlet UIPageControl *albomPageControl;
@@ -21,10 +21,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     
-    arrayNumbers = [[NSArray alloc] initWithObjects:@1, @2, @3, @4, @1, @2, @3, @4, @1, @2, @3, @4, @5, nil];
-    
+    arrayNumbers = [[NSMutableArray alloc] initWithObjects: nil];
     
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     [flowLayout setItemSize:CGSizeMake(512, 335)];
@@ -32,8 +30,14 @@
     [flowLayout setSectionInset:UIEdgeInsetsMake(0, 0, 0, 0)];
     [flowLayout setMinimumLineSpacing:-10];
     [self.collectionView setCollectionViewLayout:flowLayout];
-    self.collectionView.pagingEnabled = YES;
-    self.albomPageControl.numberOfPages = ceil((double)[arrayNumbers count] / 4); // округление к большему для кол-ва страниц
+    [self.collectionView setPagingEnabled:YES];
+    [self updateControlPageNumber];
+}
+
+- (void)addNewItemInSection {
+    [arrayNumbers insertObject:@3 atIndex:0];
+    [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:0 inSection:0]]];
+    [self updateControlPageNumber];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView*)collectionView  {
@@ -56,6 +60,10 @@
     //CGFloat pageWidth = self.collectionView.frame.size.width;
     CGFloat pageWidth = 748;
     self.albomPageControl.currentPage = self.collectionView.contentOffset.x / pageWidth;
+}
+
+- (void)updateControlPageNumber {
+    self.albomPageControl.numberOfPages = ceil((double)[arrayNumbers count] / 4); // округление к большему для кол-ва страниц
 }
 
 - (void)didReceiveMemoryWarning {

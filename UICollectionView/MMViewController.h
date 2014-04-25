@@ -10,4 +10,6 @@
 
 @interface MMViewController : UIViewController <UICollectionViewDelegateFlowLayout>
 
+- (IBAction) addNewItemInSection;
+
 @end

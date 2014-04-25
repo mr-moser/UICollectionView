@@ -51,7 +51,6 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <color key="backgroundColor" red="1" green="0.59729421589999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="XIR-k1-Xe7" secondAttribute="bottom" constant="10" id="0XF-8i-X65"/>
                                             <constraint firstItem="o7M-jp-oWK" firstAttribute="centerX" secondItem="XIR-k1-Xe7" secondAttribute="centerX" type="default" id="4my-Tn-Yaj"/>
@@ -78,7 +77,14 @@
                             </pageControl>
                             <navigationBar contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="pBI-cR-si1">
                                 <items>
-                                    <navigationItem title="Title" id="X6K-mL-CPG"/>
+                                    <navigationItem title="Title" id="X6K-mL-CPG">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="xwg-0J-ifB">
+                                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <connections>
+                                                <action selector="addNewItemInSection" destination="2" id="GcM-14-Bbi"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                         </subviews>
@@ -114,6 +120,7 @@
         <class className="MMViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MMViewController.h"/>
             <relationships>
+                <relationship kind="action" name="addNewItemInSection"/>
                 <relationship kind="outlet" name="albomPageControl" candidateClass="UIPageControl"/>
                 <relationship kind="outlet" name="collectionView" candidateClass="UICollectionView"/>
             </relationships>
@@ -137,9 +144,6 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
