@@ -22,28 +22,29 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    arrayNumbers = [[NSMutableArray alloc] initWithObjects: nil];
+    arrayNumbers = [NSMutableArray array];
     
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     [flowLayout setItemSize:CGSizeMake(512, 335)];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
     [flowLayout setSectionInset:UIEdgeInsetsMake(0, 0, 0, 0)];
-    [flowLayout setMinimumLineSpacing:-10];
+    [flowLayout setMinimumLineSpacing:0];
     [self.collectionView setCollectionViewLayout:flowLayout];
     [self.collectionView setPagingEnabled:YES];
     [self updateControlPageNumber];
 }
 //=============== Добавление нового альбома
 - (IBAction)addNewItemInSection {
-    [arrayNumbers insertObject:@3 atIndex:0];
+    [arrayNumbers addObject:@""];
+    //[arrayNumbers insertObject:@"" atIndex:0]; //добавление пустого элемента в массив для корректного вставления ячейки по каунту массива
     [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:0 inSection:0]]];
     [self updateControlPageNumber];
 }
-//=============== Клик по элементу collectionView
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-    [self deleteItemAtIndexPath:indexPath];
-}
+////=============== Клик по элементу collectionView
+//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+//    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+//    [self deleteItemAtIndexPath:indexPath];
+//}
 //=============== Удаление выбранного альбома
 - (void)deleteItemAtIndexPath:(NSIndexPath *)indexPath {
     [arrayNumbers removeObjectAtIndex:indexPath.item];
@@ -62,8 +63,14 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView*)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     static NSString * cellId = @"Cell";
     MMalbomCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
+    
     cell.albomImageFoto.image = [UIImage imageNamed:@"photoalbum-red.png"];
-    cell.albomLabel.text = [NSString stringWithFormat:@"%d", [[arrayNumbers objectAtIndex:indexPath.row] integerValue]];
+    cell.albomLabel.text = [NSString stringWithFormat:@"%d", [arrayNumbers count]];
+    
+    [arrayNumbers replaceObjectAtIndex:0 withObject:cell]; //замена пустого элемента в массиве на объект класса MMalbomCell
+    
+    cell.buttonClose.tag = [arrayNumbers count];
+    [cell.buttonClose addTarget:self action:@selector(buttonClosePress:) forControlEvents:UIControlEventTouchUpInside];
     cell.buttonClose.alpha = 0;
     
     //создание длинного нажатия на ячейку
@@ -75,10 +82,18 @@
     
     return cell;
 }
+- (IBAction)buttonClosePress:(id)sender {
+    NSLog(@"%d", [sender tag]);
+    NSIndexPath * indexPath = [NSIndexPath indexPathForItem:[sender tag]-1 inSection:0];
+    [self deleteItemAtIndexPath:indexPath];
+}
 //=============== Обработка длинного нажатия на ячейку
--(void)longPressCell:(UISwipeGestureRecognizer *)gesture {
+- (void)longPressCell:(UISwipeGestureRecognizer *)gesture {
     if(UIGestureRecognizerStateBegan == gesture.state) {
-        for (int i = 0; i < [arrayNumbers count]; i++) {
+        NSArray * arr = self.collectionView.subviews;
+        for (int i = 0; i < [arr count]; i++) {
+            if ([[arr objectAtIndex:i] isKindOfClass:[MMalbomCell class]])
+                [[[arr objectAtIndex:i] buttonClose] setAlpha:YES];
         }
     }
 }
